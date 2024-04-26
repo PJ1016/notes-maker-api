@@ -1,0 +1,16 @@
+CREATE TABLE playerStats (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player VARCHAR(50),
+    Team VARCHAR(50),
+    runs INT,
+    highestScore INT
+);
+INSERT INTO playerStats (player, team, runs, highestScore) VALUES
+('Jos Buttler', 'RR', 107, 57),
+('Virat Kohli', 'RCB', 113, 63),
+('Ruturaj Gaikwad', 'CSK', 108, 58),
+('Travis Head', 'SRH', 102, 54),
+('Rohit Sharma', 'MI', 105, 43),
+('Sunil Narine', 'KKR', 109, 40),
+('Marcus Stoinis', 'LSG', 124, 42),
+('Yashasvi Jaiswal', 'RR', 104, 32);
