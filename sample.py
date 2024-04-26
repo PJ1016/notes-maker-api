@@ -13,28 +13,22 @@ connection = mysql.connector.connect(
     database='praveenSQL'  # Change this to your database name
 )
 
-# Function to fetch users from MySQL
-def get_users_from_mysql():
-    cursor = connection.cursor(dictionary=True)
-    cursor.execute('SELECT * FROM users')
-    users = cursor.fetchall()
-    cursor.close()
-    return users
 
-def get_player_stats_from_mysql():
+@app.route('/battingStats', methods=['GET'])
+def get_batting_stats():
     cursor = connection.cursor(dictionary=True)
-    cursor.execute('SELECT * FROM playerstats')
-    player_stats = cursor.fetchall()
+    cursor.execute('SELECT * FROM playerStats where playerRole="Batsman" or playerRole="Wicket Keeper"')
+    batting_stats = cursor.fetchall()
     cursor.close()
-    return player_stats
-@app.route('/users', methods=['GET'])
-def get_users():
-    users = get_users_from_mysql()
-    return jsonify(users)
-@app.route('/playerStats', methods=['GET'])
-def get_player_stats():
-    player_stats = get_player_stats_from_mysql()
-    return jsonify(player_stats)
+    return jsonify(batting_stats)
+
+@app.route('/playerDetails/<int:id>',methods=['GET'])
+def get_player_details(id):
+    cursor = connection.cursor(dictionary=True)
+    cursor.execute('SELECT * FROM playerStats where id=%s', (id,))
+    player_info=cursor.fetchall()
+    cursor.close()
+    return jsonify(player_info)
 
 if __name__ == '__main__':
     app.run(debug=True)
