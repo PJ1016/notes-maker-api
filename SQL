@@ -14,3 +14,14 @@ INSERT INTO playerStats (player, team, runs, highestScore) VALUES
 ('Sunil Narine', 'KKR', 109, 40),
 ('Marcus Stoinis', 'LSG', 124, 42),
 ('Yashasvi Jaiswal', 'RR', 104, 32);
+
+CREATE TABLE player_info(
+id INT AUTO_INCREMENT PRIMARY KEY,
+playerName  VARCHAR(50),
+gender  VARCHAR(50),
+role  VARCHAR(50),
+battingStyle  VARCHAR(50),
+bowlingStyle  VARCHAR(50),
+nationality VARCHAR(50),
+dateOfBirth VARCHAR(50),
+playerDescription VARCHAR(50))
